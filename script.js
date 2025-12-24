@@ -1,3 +1,6 @@
+var titleText = document.getElementById("title");
+var messageText = document.getElementById("message");
+var startBtn = document.getElementById("startBtn");
 var game = document.getElementById("game");
 var bird = document.getElementById("bird");
 var scoreText = document.getElementById("score");
