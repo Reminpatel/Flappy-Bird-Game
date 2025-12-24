@@ -33,6 +33,17 @@ body {
     position: absolute;
     width: 80px;
     background: #228B22;
+}/* Ensure UI is always on top */
+#startScreen {
+    z-index: 10;
+}
+
+#score {
+    z-index: 5;
+}
+
+.pipe {
+    z-index: 1;
 }
 
 .pipe.top {
