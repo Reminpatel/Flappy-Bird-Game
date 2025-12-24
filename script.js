@@ -24,10 +24,10 @@ function startGame() {
     gameRunning = true;
 
     gameInterval = setInterval(updateGame, 20);
-
-    createPipe(); // 👈 immediate first pipe
-    pipeInterval = setInterval(createPipe, 1300); // 👈 closer spacing
+    createPipe();
+    pipeInterval = setInterval(createPipe, 1300);
 }
+startBtn.addEventListener("click", startGame);
 
 /* Reset */
 function resetGame() {
@@ -40,6 +40,10 @@ function resetGame() {
         pipes[i].remove();
     }
     pipes = [];
+
+    titleText.innerHTML = "Flappy Bird";
+    messageText.innerHTML = "Press SPACE or CLICK";
+    startBtn.innerHTML = "Start";
 }
 
 /* Update Loop */
@@ -129,8 +133,19 @@ function endGame() {
     clearInterval(gameInterval);
     clearInterval(pipeInterval);
     gameRunning = false;
+
+    // Remove all pipes immediately
+    for (var i = 0; i < pipes.length; i++) {
+        pipes[i].remove();
+    }
+    pipes = [];
+
+    // Show Game Over UI
+    titleText.innerHTML = "Game Over";
+    messageText.innerHTML = "Score: " + score;
+    startBtn.innerHTML = "Restart";
+
     startScreen.style.display = "flex";
-    startScreen.innerHTML = "<h1>Game Over</h1><p>Score: " + score + "</p><button onclick='location.reload()'>Restart</button>";
 }
 
 /* Controls */
